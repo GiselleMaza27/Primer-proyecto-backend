@@ -2,7 +2,7 @@ const {request ,respose} = require("express");
 const Usuarios = require("../models/usuario");
 const bcrypt = require("bcryptjs");
 
-const usuariosGet = async (req = request, res = response)=> {
+const usuarioGet = async (req = request, res = response)=> {
     const {limite = 5, desde = 0}= req.query;
 
     const [total,usuarios]= await Promise.all([
@@ -69,7 +69,7 @@ const usuarioDelete = async (req, res)=>{
  };
 
  module.exports = {
-    usuariosGet,
+    usuarioGet,
     usuarioPost,
     usuarioPut,
     usuarioDelete,
