@@ -58,8 +58,10 @@ const usuarioDelete = async (req, res)=>{
 
     const usuarioBorrado = await Usuario.findByIdAndUpdate(
         id,{
-            state: false,};
-            {new: true});
+            state: false,
+        },
+        {new: true,}
+            );
     res.status(200).json({
         message: "Usuario eliminado",
         usuarioBorrado ,
