@@ -9,10 +9,8 @@ const{
 
 
 const{
-    usuariosGet,
-    usuariosPost,
-    usuariosPut,
-    usuariosDelete,
+    usuarioGet,
+    usuarioPost,
     usuarioPut,
     usuarioDelete,
 }= require("../control/usuarios");
@@ -21,7 +19,7 @@ const{
 
 const router = Router()
 
-router.get("/",usuariosGet);
+router.get("/",usuarioGet);
 router.post(
     "/",
     [
@@ -34,7 +32,7 @@ router.post(
         check("role").custom(esRoleValido),
         validarCampos,
     ],
-    usuariosPost
+    usuarioPost
 );
 router.put(
     "/:id",

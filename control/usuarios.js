@@ -1,5 +1,5 @@
 const {request ,respose} = require("express");
-const Usuarios = require("../models/usuarios");
+const Usuarios = require("../models/usuario");
 const bcrypt = require("bcryptjs");
 
 const usuariosGet = async (req = request, res = response)=> {
@@ -20,7 +20,7 @@ const usuariosGet = async (req = request, res = response)=> {
 const usuarioPost = async (req = request, res)=>{
     const {name, email, password, role }= req.body;
 
-    const usuario = new Usuario ({name, email, password, role});
+    const Usuarios = new Usuario ({name, email, password, role});
 
 
     const salt = bcrypt.genSaltSync();
@@ -43,7 +43,7 @@ const usuarioPut = async (req = request, res)=> {
     const salt = bcrypt.genSaltSync();
     resto.password = bcrypt.hashSync(password, salt);
 
-    const usuario = await Usuario.findByIdAndUpdate(id, resto, {new:true});
+    const Usuarios = await Usuario.findByIdAndUpdate(id, resto, {new:true});
     
     
     res.status(200).json({
@@ -56,7 +56,7 @@ const usuarioDelete = async (req, res)=>{
     const {id}= req.params;
 
 
-    const usuarioBorrado = await Usuario.findByIdAndUpdate(
+    const usuarioBorrado = await Usuarios.findByIdAndUpdate(
         id,{
             state: false,
         },
