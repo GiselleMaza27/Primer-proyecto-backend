@@ -20,7 +20,7 @@ const usuarioGet = async (req = request, res = response)=> {
 const usuarioPost = async (req = request, res)=>{
     const {name, email, password, role }= req.body;
 
-    const Usuarios = new Usuario ({name, email, password, role});
+    const usuario = new Usuarios ({name, email, password, role});
 
 
     const salt = bcrypt.genSaltSync();
@@ -43,7 +43,7 @@ const usuarioPut = async (req = request, res)=> {
     const salt = bcrypt.genSaltSync();
     resto.password = bcrypt.hashSync(password, salt);
 
-    const Usuarios = await Usuario.findByIdAndUpdate(id, resto, {new:true});
+    const usuario = await Usuarios.findByIdAndUpdate(id, resto, {new:true});
     
     
     res.status(200).json({
